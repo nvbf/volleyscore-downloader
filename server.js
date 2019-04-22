@@ -17,5 +17,5 @@ function repeatTwoHours(matchId) {
     setTimeout(() => {
         clearInterval(intervalId)
        fs.unlink("./" + matchId + ".png", () => console.log("deleted " + matchId))
-    }, 10000)
+    }, 7200000)
 }
