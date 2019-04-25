@@ -16,6 +16,6 @@ function repeatTwoHours(matchId) {
     const intervalId = setInterval(() => download(matchId), 1000)
     setTimeout(() => {
         clearInterval(intervalId)
-       fs.unlink("./" + matchId + ".png", () => console.log("deleted " + matchId))
+       fs.unlink(__dirname + "/" + matchId + ".png", () => console.log("deleted " + matchId))
     }, 7200000)
 }
