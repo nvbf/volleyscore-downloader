@@ -1,11 +1,23 @@
-const http = require('https');
+const axios = require('axios');
 const fs = require('fs');
 
 function download(matchId) {
+  
   console.log(matchId)
-  const request = http.get("https://cryptic-plateau-12043.herokuapp.com/scoreboard/png?matchId=" + matchId, function(response) {
+  const request = 
+  axios.get("https://cryptic-plateau-12043.herokuapp.com/scoreboard/png", {
+    params: {
+      matchId: matchId
+    },
+    responseType: "stream"
+  })
+  .then(function (response) {
+    console.log("ok: matchid " + matchId)
     const file = fs.createWriteStream(__dirname + "/" + matchId + ".png")  
-    response.pipe(file);
+    response.data.pipe(file)
+  })
+  .catch(function (error) {
+    console.log(error);
   });
 }
 
