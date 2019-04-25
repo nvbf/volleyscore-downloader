@@ -32,5 +32,5 @@ function repeatTwoHours(matchId) {
         clearInterval(intervalId)
         delete data[data.indexOf(matchId)]
        fs.unlink(__dirname + "/" + matchId + ".png", () => console.log("Deleted " + matchId))
-    }, 10000)
+    }, 72000000)
 }
