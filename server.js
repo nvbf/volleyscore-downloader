@@ -1,4 +1,5 @@
 const download = require("./download")
+const restart = restart("./restart")
 const fs = require('fs');
 const express = require('express')
 const app = express()
@@ -17,6 +18,7 @@ app.get('/', async(req, res) => {
     }
 
     data.push(req.query.matchId)
+    restart()
     repeatTwoHours(req.query.matchId)
     await download(req.query.matchId)
 
