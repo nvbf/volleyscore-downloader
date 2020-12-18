@@ -18,73 +18,74 @@ vhost __defaultVhost__ {
 transcode {
 	enabled     on;
 	ffmpeg      /root/bin/ffmpeg;
-	engine court1 {
-
-	    enabled         on;
-	    vfilter {
-	i /root/volleyscore-downloader/${match_id_court1}.png;
-	filter_complex  'overlay=10:10';
-	f image2;
-	    }
-	    vcodec          libx264;
-	    vthreads        4;
-	    vprofile        main;
-	    vpreset         medium;
-	    vparams {
-	    }
-	    acodec          libfdk_aac;
-	    aparams {
-	    }
-	    output         rtmp://a.rtmp.youtube.com/live2/${stream_id_court1};
-	}
-
-	engine court2 {
-
-	    enabled         on;
-	    vfilter {
-	i /root/volleyscore-downloader/${match_id_court2}.png;
-	filter_complex  'overlay=10:10';
-	f image2;
-	    }
-	    vcodec          libx264;
-	    vthreads        4;
-	    vprofile        main;
-	    vpreset         medium;
-	    vparams {
-	    }
-	    acodec          libfdk_aac;
-	    aparams {
-	    }
-	    output         rtmp://a.rtmp.youtube.com/live2/${stream_id_court2};
-	}
-
-	engine court3 {
-
-	    enabled         on;
-	    vfilter {
-	i /root/volleyscore-downloader/${match_id_court3}.png;
-	filter_complex  'overlay=10:10';
-	f image2;
-	    }
-	    vcodec          libx264;
-	    vthreads        4;
-	    vprofile        main;
-	    vpreset         medium;
-	    vparams {
-	    }
-	    acodec          libfdk_aac;
-	    aparams {
-	    }
-	    output         rtmp://a.rtmp.youtube.com/live2/${stream_id_court3};
-	}
+	#engine court1 {
+#
+#	    enabled         on;
+#	    vfilter {
+#	i /root/volleyscore-downloader/${match_id_court1}.png;
+#	filter_complex  'overlay=10:10';
+#	f image2;
+#	    }
+#	    vcodec          libx264;
+#	    vthreads        4;
+#	    vprofile        main;
+#	    vpreset         medium;
+#	    vparams {
+#	    }
+#	    acodec          libfdk_aac;
+#	    aparams {
+#	    }
+#	    output         rtmp://a.rtmp.youtube.com/live2/${stream_id_court1};
+#	}
+#
+#	engine court2 {
+#
+#	    enabled         on;
+#	    vfilter {
+#	i /root/volleyscore-downloader/${match_id_court2}.png;
+#	filter_complex  'overlay=10:10';
+#	f image2;
+#	    }
+#	    vcodec          libx264;
+#	    vthreads        4;
+#	    vprofile        main;
+#	    vpreset         medium;
+#	    vparams {
+#	    }
+#	    acodec          libfdk_aac;
+#	    aparams {
+#	    }
+#	    output         rtmp://a.rtmp.youtube.com/live2/${stream_id_court2};
+#	}
+#
+#	engine court3 {
+#
+#	    enabled         on;
+#	    vfilter {
+#	i /root/volleyscore-downloader/${match_id_court3}.png;
+#	filter_complex  'overlay=10:10';
+#	f image2;
+#	    }
+#	    vcodec          libx264;
+#	    vthreads        4;
+#	    vprofile        main;
+#	    vpreset         medium;
+#	    vparams {
+#	    }
+#	    acodec          libfdk_aac;
+#	    aparams {
+#	    }
+#	    output         rtmp://a.rtmp.youtube.com/live2/${stream_id_court3};
+#	}
 
 	engine court4 {
 
 	    enabled         on;
 	    vfilter {
-	i /root/volleyscore-downloader/${match_id_court4}.png;
-	filter_complex  'overlay=10:10';
-	f image2;
+			loop 1
+			f image2;
+			i /root/volleyscore-downloader/${match_id_court4}.png;
+			filter_complex  'overlay=10:10';
 	    }
 	    vcodec          libx264;
 	    vthreads        4;
@@ -95,7 +96,7 @@ transcode {
 	    acodec          libfdk_aac;
 	    aparams {
 	    }
-	    output         rtmp://a.rtmp.youtube.com/live2/${stream_id_court4};
+	    output        rtmp://127.0.0.1:[port]/[app]?vhost=[vhost]/[stream]_[engine]; 
 	}
     }
 }

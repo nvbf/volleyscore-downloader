@@ -10,19 +10,19 @@ const data = []
 
 const courts_conf = {
     1: {
-       "mid": "match_id_court1",
+       "mid": "default",
        "sid": "stream_id_court1",
     },
     2: {
-       "mid": "match_id_court2",
+       "mid": "default",
        "sid": "stream_id_court2",
     },
     3: {
-       "mid": "match_id_court3",
+       "mid": "default",
        "sid": "stream_id_court3",
     },
     4: {
-       "mid": "match_id_court4",
+       "mid": "default",
        "sid": "stream_id_court4",
     }
 }
