@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function genConfig(
+async function genConfig(
     match_id_court1, stream_id_court1,
     match_id_court2, stream_id_court2,
     match_id_court3, stream_id_court3,

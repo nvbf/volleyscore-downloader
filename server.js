@@ -46,7 +46,7 @@ app.get('/', async(req, res) => {
         return;
     }
 
-    const tournamentid = req.query.tournamentId;
+    const tournamentNum = req.query.tournamentNum;
     const eventid = req.query.eventId;
     const courtnum = req.query.courtNum;
     const matchid = req.query.matchId;
@@ -59,13 +59,13 @@ app.get('/', async(req, res) => {
 	courts_conf[courtnum]["mid"] = matchid;
 	courts_conf[courtnum]["sid"] = eventid;
 
-	srsconfig(
+	await srsconfig(
 		courts_conf[1]["mid"], courts_conf[1]["sid"],
 		courts_conf[2]["mid"], courts_conf[2]["sid"],
 		courts_conf[3]["mid"], courts_conf[3]["sid"],
 		courts_conf[4]["mid"], courts_conf[4]["sid"]
 	)
-	restartsrs()
+	await restartsrs()
 
     if(data.some((obj) => obj === matchid)) {
         res.send("Prosesseres allerede")
