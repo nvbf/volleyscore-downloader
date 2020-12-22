@@ -65,7 +65,12 @@ app.get('/', async(req, res) => {
 		courts_conf[3]["mid"], courts_conf[3]["sid"],
 		courts_conf[4]["mid"], courts_conf[4]["sid"]
 	)
-	await restartsrs()
+	try {
+		await restartsrs();
+		console.log("Restarted");
+	} catch( err ) {
+		console.log('SRS Restart failed', err)
+	}
 
     if(data.some((obj) => obj === matchid)) {
         res.send("Prosesseres allerede")
