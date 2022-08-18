@@ -19,6 +19,27 @@ vhost __defaultVhost__ {
 		enabled     on;
 		ffmpeg      /root/bin/ffmpeg;
 
+	engine court2 {
+             enabled         on;
+             vfilter {
+                 loop 1;
+                 f image2;
+                 i /root/volleyscore-downloader/${match_id_court2}.png;
+                 filter_complex  'overlay';
+             }
+             vcodec          libx264;
+             vthreads        4;
+             vprofile        main;
+             vpreset         medium;
+             vparams {
+            }
+             acodec          libfdk_aac;
+             aparams {
+             }
+             output        rtmp://127.0.0.1:[port]/[app]?vhost=[vhost]/[stream]_[engine]; 
+         }
+	
+
 		engine court4 {
 		    enabled         on;
 		    vfilter {
